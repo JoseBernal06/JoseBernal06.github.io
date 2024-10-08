@@ -172,18 +172,70 @@ console.log(retornoCapitulo()())
 
 //Objetos
 
-let usuario = {
-    nombre:"Jose",
-    edad:20
+const orense = {
+    name:"Orense",
+    age:20,
+    address:{city:"Machala", telephone:123456},
+    friends:["cocodrilo","leon"],
+    status:true
 }
 
+console.log(orense)
+console.log(orense.name)
+console.log(orense.age)
+console.log(orense.address.city)
+orense.friends.forEach(x=>console.log(x));
 
 
+//Desestructuracion
+
+//let name=orense.name
+//let age=orense.age
+
+let {name:nombre_equipo, age:edad, friends:amigos}=orense
+console.log("-------------------------------------------------------------------")
+console.log(nombre_equipo)
+console.log(edad)
+console.log(amigos)
 
 
+//Metodos
+
+const datosBB = {
+    name:"Bunny",
+    age:10,
+    address:{city:"Orlando", telephone:9999},
+    friends:["a","b"],
+    status:false
+}
+
+//agregar datos a objetos
+datosBB.photo = "bunny.jpg"
+console.log(datosBB)
+
+//borrar dato
+delete datosBB.age
+console.log(datosBB)
 
 
+//----------------------------------------------------------------------------------------
+
+//verifica si las claves tienen valores
+Object.keys(datosBB).includes("") ? console.log("Falta clave"):console.log("Tiene clave");
 
 
+//verifica si los valores no tienen valores
+Object.values(datosBB).includes("") ? console.log("Falta valor"):console.log("Tiene valor");
 
+//----------------------------------------------------------------------------------------
 
+const datosBB_2= {
+    nameN:"Naruto",
+    ageN:17,
+    addressN:{city:"konoha", telephone:9999},
+    friendsN:["a","b"],
+    statusN:false
+}
+
+const union = {...datosBB, ...datosBB_2}
+console.log(union)
