@@ -239,3 +239,140 @@ const datosBB_2= {
 
 const union = {...datosBB, ...datosBB_2}
 console.log(union)
+
+
+//ES6
+// Creacion de objetos
+const producto="tele"
+const precio = 700
+
+const newProduct={
+    producto, precio
+}
+
+console.log(newProduct);
+
+
+
+// ------------------------------------------------------------------------------------
+
+// ?Arrays
+
+const users=["Mateo", "Juan", "Luis", "Marcelo"]
+
+users.forEach((user)=>{
+    console.log(user)
+});
+
+
+const news=[
+    {
+        name:"Hallowen",
+        date:"31-10-2024",
+        place:"Fosh"
+    },
+    {
+        name:"Fistas de quito",
+        date:"06-12-2024",
+        place:"EPN"
+    }
+]
+
+news.forEach((n, index) => {
+    console.log(n.date, index)
+});
+
+
+const aportaciones=[
+    {   name: "Basic",
+        mount: 5,
+        imagen: "photo/plan/basic.png"
+    },
+    {   name: "Plus",
+        mount: 10,
+        imagen: "photo/plan/basic.png"
+    }
+]
+
+const planes=aportaciones.map((aportacion)=>{
+    return {
+        name:aportacion.name,
+        mount:aportacion.mount,
+        iamgen:aportacion.imagen,
+    }
+});
+
+console.log(planes);
+
+
+//ES6
+// etraccion de valores
+const dishes = ["Arroz", "jugo", "sopa"]
+
+const [dish1, dish2, dish3]=dishes
+
+console.log(dish1)
+console.log(dish2)
+console.log(dish3)
+
+//-------------------------------------------------------------------------------
+
+const hoobies=["playa", "montaña", "rio", "piscina"]
+
+//Metodos
+
+hoobies.length >= 5 ? console.log("Hola") : console.log("adios")
+
+//agrega un elemento al final del arreglo
+hoobies.push("Zona")
+
+// agrega un elemento al inicio
+hoobies.unshift("Polimemes")
+
+// remueve el ultimo elemento del arreglo
+hoobies.pop()
+
+// remueve el primer elemento del final
+hoobies.shift()
+console.log(hoobies);
+
+// busca un elemento de un arreglo
+let result = hoobies.find((hobie)=>{
+    return hobie==="piscina"
+})
+
+//manera corta
+
+/*let result = hoobies.find((hobie)=>(
+        hobie==="piscina"
+)) */
+
+        console.log(result);
+
+result ? console.log("El hobbie ya existe"):("El hobbie no existe")
+
+
+// Devuelve un arreglo con todas las coincidencias
+// en este caso los que empiezan con la letra p
+let ho=hoobies.filter((f)=>(f.startsWith("p")))
+console.log(ho)
+
+
+hoobies.includes("piscina") ? console.log("Hobie"):console.log("No se encontraron cohinsidencias")
+
+//----------------------------------------------------------------------------------------------------------
+
+// Operador rest y spread
+
+// spread--->expande
+// permite agrupar multiples elementos en un objeto iterable
+const userBasic=["jose", "ivonne", "marta"]
+const userPremium=["Mateo", "Vero"]
+const allUsers=[...userBasic, ...userPremium]
+console.log(allUsers)
+
+// rest--->agrupa
+// expande un objeto iterable
+const assitences=["Mateo", "Max", "Brenda", "Carlos"]
+const [userOne, UserTwo, ...usersRest]=assitences
+console.log(usersRest)
