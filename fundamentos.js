@@ -419,20 +419,74 @@ const conexionBD=(datosConexion)=>{
     })
 }
 
+//-------------------------------------------------------------------------
+
 conexionBD(true)
-.then(mensaje=>console.log(mensaje)) // captura el exito de la promesa
-.catch(error=>console.log(error)) // captura el error
+    .then(mensaje=>console.log(mensaje)) // captura el exito de la promesa
+    .catch(error=>console.log(error)) // captura el error
+
+//---------------------------------------------------------------------------
+
+// manera de manejar codigo asincrono
+const verifyConnection = async() => {
+    try {
+        console.log(await conexionBD(false)) 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+verifyConnection()
+
+//---------------------------------------------------------------------------
 
 // promesa (api de perros)
 const getDogs=fetch("https://dog.ceo/api/breeds/image/random")
-.then(respuesta=>respuesta.json())
-// convierte la imagen en formato en json
-.then(respuesta=>console.log(respuesta))
-// impriminos el json
-.then(dataApi=>console.log(dataApi))
-.catch(error=>console.log(error))
+    .then(respuesta=>respuesta.json())
+    // convierte la imagen en formato en json
+    .then(respuesta=>console.log(respuesta))
+    // impriminos el json
+    .then(dataApi=>console.log(dataApi))
+    .catch(error=>console.log(error))
 
+//----------------------------------------------------------------------
 
-//* Programacion sincrona
+const drawDogs=async()=>{
+
+    try {
+        let getDogs = await fetch("https://dog.ceo/api/breeds/image/random")
+        let data_api=await getDogs.json()
+        console.log(data_api)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+drawDogs()
+
+//-------------------------------------------------------------------------
+
+// ! CONSUMO DE UNA API EXTERNA
+//? TAREA DESAFIO
+//* consumir una api privada con fech y mostrar su data
+
+const apiGIF="https://api.giphy.com/v1/stickers/trending"
+const keyapi= "lerx9FDWD5PH78M207Cj95ac4KTt8G3v"
+
+const verGif = async(url, key) => {
+    try {
+        const request =await fetch(`${url}?api_key=${key}`)
+        const response = await request.json()
+        console.log(response)
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+verGif(apiGIF, keyapi)
 
 //-------------------------------------------------------------------------------------------------------
+
+//* Programacion sincrona  
