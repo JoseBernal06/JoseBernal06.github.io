@@ -376,3 +376,63 @@ console.log(allUsers)
 const assitences=["Mateo", "Max", "Brenda", "Carlos"]
 const [userOne, UserTwo, ...usersRest]=assitences
 console.log(usersRest)
+
+
+//-------------------------------------------------------------------------------------------------------
+
+//! Programacion declarativva 
+
+
+
+
+
+
+//! Programacion imperativa
+
+
+//-------------------------------------------------------------------------------------------------------
+
+//* Programacion asincrona 
+
+// callback
+const getUserBD = ()=> console.log({id:123, name:"Mateo", age:21})
+setTimeout(getUserBD, 5000) // la funcion se ejecuta despues de 5 segundos
+
+function getUserAPI(callback){
+    setTimeout(()=>{
+        const userBD = {id:473, name:"Jose", age:25}
+        callback(userBD)
+    }, 1000);
+}
+
+const getUserAge = (dataUser)=>console.log(dataUser.age)
+
+getUserAPI(getUserAge)
+
+
+// promesas
+const conexionBD=(datosConexion)=>{
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            datosConexion ? resolve("Conexion ok") : reject("Conexion Bad")
+        }, 3000);
+    })
+}
+
+conexionBD(true)
+.then(mensaje=>console.log(mensaje)) // captura el exito de la promesa
+.catch(error=>console.log(error)) // captura el error
+
+// promesa (api de perros)
+const getDogs=fetch("https://dog.ceo/api/breeds/image/random")
+.then(respuesta=>respuesta.json())
+// convierte la imagen en formato en json
+.then(respuesta=>console.log(respuesta))
+// impriminos el json
+.then(dataApi=>console.log(dataApi))
+.catch(error=>console.log(error))
+
+
+//* Programacion sincrona
+
+//-------------------------------------------------------------------------------------------------------
